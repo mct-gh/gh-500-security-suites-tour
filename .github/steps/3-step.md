@@ -1,35 +1,25 @@
-## Step 3: (replace-me: STEP-NAME)
+## 3단계 · Secret Protection 켜기
 
-(replace-me: OPTIONAL Brief story or scenario to introduce the step)
+세 번째 제품군입니다. 이 저장소에는 시크릿처럼 보이는 자리표시자가 하나 들어 있습니다.
 
-### 📖 Theory: (replace-me: Theory title)
+### 할 일
 
-<!-- GitHub-styled notifications can be used outside of ordered lists. Available options are: NOTE, IMPORTANT, WARNING, TIP, CAUTION -->
-<!--
+`.github/secret_scanning.yml` 을 만들고 스캔에서 제외할 경로를 지정하세요.
+
+```yaml
+paths-ignore:
+  - "app/data.json"
+  - "docs/**/*.md"
+```
+
+### 왜 이렇게 하나
+
+제외 설정은 **오탐을 줄이려고** 씁니다. 테스트 픽스처나 문서 예시가 계속 알림을 만들면
+진짜 알림이 묻힙니다.
+
+다만 제외는 양날입니다. 제외한 경로에 진짜 키가 들어가도 아무도 모릅니다.
+그래서 실제 운영에서는 제외 경로를 CODEOWNERS 로 잠그는 것이 보통입니다.
+
 > [!NOTE]
-> (Important note or additional information relevant to this section)
- -->
-
-(replace-me: Optional theory or background information relevant to this step)
-
-### ⌨️ Activity: (replace-me: Activity title)
-
-1. (replace-me: First instruction)
-
-   (replace-me: Make sure to properly indent any multiline instructions)
-
-1. (replace-me: Second instruction)
-
-   (replace-me: Optionally reference images from the `.github/images/` directory to support any part of the content)
-
-   <img width="200" alt="descriptive alt text" src="../images/jetpacktocat.png" />
-
-1. (replace-me: Additional instructions as needed)
-
-<details>
-<summary>Having trouble? 🤷</summary><br/>
-
-- (replace-me: Troubleshooting tip or hint)
-- (replace-me: Additional troubleshooting tips as needed)
-
-</details>
+> 푸시 보호(push protection)는 public 저장소에서 기본으로 켜져 있습니다.
+> 진짜 형식의 토큰을 커밋하려고 하면 푸시 자체가 거부됩니다. 이 랩에서는 시도하지 마세요.
