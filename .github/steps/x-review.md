@@ -1,16 +1,11 @@
-## Review
+## 정리
 
-_Congratulations, you've completed this exercise and learned a lot about (replace-me: feature/product that was taught in this exercise)
+한 저장소에서 세 제품군을 전부 켜봤습니다.
 
-<img src="https://octodex.github.com/images/jetpacktocat.png" alt="celebrate" width=200 align=right>
+- **Supply Chain Security** 는 내가 쓴 남의 코드를 봅니다. 매니페스트가 입력입니다.
+- **Code Security** 는 내가 쓴 코드를 봅니다. 소스 트리가 입력입니다.
+- **Secret Protection** 은 커밋 내용 전체를 봅니다. 문자열 패턴이 입력입니다.
 
-Here's a recap of your accomplishments:
+셋은 입력이 다르기 때문에 잡는 것도, 고칠 사람도 다릅니다.
 
-- (replace-me: Accomplishment #1)
-- (replace-me: Accomplishment #N)
-
-### What's next?
-
-- (replace-me: Natural follow up Skills exercise - if there is one)
-- (replace-me: Documentation link to learn more about the feature)
-- (replace-me: Other resources or calls to action)
+다음 랩에서는 Code Security 안쪽으로 들어가 CodeQL 이 실제로 무엇을 만드는지 봅니다.
