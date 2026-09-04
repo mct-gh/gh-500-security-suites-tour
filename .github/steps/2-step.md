@@ -1,36 +1,40 @@
-## Step 2: (replace-me: STEP-NAME)
+## 2단계 · Code Security 켜기
 
-(replace-me: OPTIONAL Brief story or scenario to introduce the step)
+이번엔 코드 자체를 봅니다. `app/app.js` 에는 `innerHTML` 로 값을 넣는 부분이 있습니다.
 
-### 📖 Theory: (replace-me: Theory title)
+### 할 일
 
-<!-- GitHub-styled notifications can be used outside of ordered lists. Available options are: NOTE, IMPORTANT, WARNING, TIP, CAUTION -->
-<!--
-> [!NOTE]
-> (Important note or additional information relevant to this section)
- -->
+`.github/workflows/codeql.yml` 을 만들고 아래 내용을 넣으세요.
 
-(replace-me: Optional theory or background information relevant to this step)
+```yaml
+name: CodeQL
 
-(replace-me: OPTIONAL Reference images from the `.github/images/` directory to support any part of the content)
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * 1"
 
-<img width="200" alt="descriptive alt text" src="../images/inflatocat.png" />
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+      - uses: github/codeql-action/analyze@v3
+```
 
+### 왜 이렇게 하나
 
-### ⌨️ Activity: (replace-me: Activity title)
+`security-events: write` 가 없으면 결과를 업로드하지 못합니다. 가장 흔한 실패 원인입니다.
+`schedule` 을 같이 거는 이유는, 코드가 바뀌지 않아도 **쿼리 팩이 갱신**되면 새 취약점이 잡히기 때문입니다.
+이벤트 기반 스캔만 걸면 조용한 저장소는 영원히 옛 기준으로 남습니다.
 
-1. (replace-me: First instruction)
-
-    (replace-me: Make sure to properly indent any multiline instructions)
-
-1. (replace-me: Second instruction)
-
-1. (replace-me: Additional instructions as needed)
-
-<details>
-<summary>Having trouble? 🤷</summary><br/>
-
-- (replace-me: Troubleshooting tip or hint)
-- (replace-me: Additional troubleshooting tips as needed)
-
-</details>
+커밋한 뒤 **Actions** 탭에서 실행을 확인하고, **Security → Code scanning** 에서 알림을 보세요.
