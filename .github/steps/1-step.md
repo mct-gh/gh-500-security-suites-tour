@@ -1,36 +1,27 @@
-## Step 1: (replace-me: STEP-NAME)
+## 1단계 · Supply Chain Security 켜기
 
-(replace-me: OPTIONAL Brief story or scenario to introduce the step)
+의존성부터 봅니다. 이 저장소의 `package.json` 에는 오래된 버전이 두 개 들어 있습니다.
 
-(replace-me: OPTIONAL Reference images from the `.github/images/` directory to support any part of the content)
+### 할 일
 
-<img width="200" alt="descriptive alt text" src="../images/inspectocat.png" />
+`.github/dependabot.yml` 파일을 만들고 아래 내용을 넣으세요.
 
-### 📖 Theory: (replace-me: Theory title)
+```yaml
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+```
 
-<!-- GitHub-styled notifications can be used outside of ordered lists. Available options are: NOTE, IMPORTANT, WARNING, TIP, CAUTION -->
-<!--
-> [!NOTE]
-> (Important note or additional information relevant to this section)
- -->
+그리고 저장소 **Settings → Advanced Security** 에서 Dependabot alerts 를 켜세요.
 
-(replace-me: Optional theory or background information relevant to this step)
+### 왜 이렇게 하나
 
+`package-ecosystem` 은 어떤 패키지 매니저를 볼지 정합니다.
+`directory` 는 매니페스트 파일이 있는 위치이고, 루트면 `/` 입니다.
+Dependabot 은 이 파일이 있어야 업데이트 PR 을 만듭니다.
+반면 **알림**은 이 파일 없이도 의존성 그래프만 켜져 있으면 나옵니다. 둘을 구분하세요.
 
-### ⌨️ Activity: (replace-me: Activity title)
-
-1. (replace-me: First instruction)
-
-    (replace-me: Make sure to properly indent any multiline instructions)
-
-1. (replace-me: Second instruction)
-
-1. (replace-me: Additional instructions as needed)
-
-<details>
-<summary>Having trouble? 🤷</summary><br/>
-
-- (replace-me: Troubleshooting tip or hint)
-- (replace-me: Additional troubleshooting tips as needed)
-
-</details>
+파일을 커밋하면 자동으로 채점됩니다.
